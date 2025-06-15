@@ -1,3 +1,4 @@
+import DocumentEditorComponent from "@/components/DocumentEditorComponent";
 import DocumentNavBarComponent from "@/components/DocumentNavBarComponent";
 
 export default function DocumentDetailPage() {
@@ -5,8 +6,8 @@ export default function DocumentDetailPage() {
     <div>
       <DocumentNavBarComponent />
 
-      <div className="text-white">
-
+      <div>
+        <DocumentEditorComponent />
       </div>
     </div>
   );
