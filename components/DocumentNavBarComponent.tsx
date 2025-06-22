@@ -9,6 +9,7 @@ import { Button } from "./ui/button";
 import { Edit3 } from "lucide-react";
 import { Input } from "./ui/input";
 import { Check, X } from "lucide-react";
+import Link from "next/link";
 interface DocumentNavbarProps {
   documenttitle?: string;
   userProfile?: {
@@ -46,51 +47,11 @@ export default function DocumentNavBarComponent({
   return (
     <div className="w-screen h-[100px] flex justify-between items-center self-center px-24">
       <div>
-        <Image src={LiveDocLogo} alt="logo of live doc" />
+        <Link href="/documents" className="hover:opacity-80 transition-opacity cursor-pointer">
+          <Image src={LiveDocLogo} alt="logo of live doc" />
+        </Link>
       </div>
-      <div>
-        {isEditing ? (
-          <div className="flex items-center gap-2">
-            <Input
-              value={editTitle}
-              onChange={(e) => setEditTitle(e.target.value)}
-              onKeyDown={handleKeyPress}
-              className="bg-gray-700 border-gray-600 text-gray-100 focus:border-purple-500 min-w-[200px]"
-              autoFocus
-            />
-            <Button
-              onClick={handleSaveTitleChange}
-              size="sm"
-              variant="ghost"
-              className="text-green-400 hover:text-green-300 hover:bg-green-500/10 hover:cursor-pointer"
-            >
-              <Check className="h-4 w-4" />
-            </Button>
-            <Button
-              onClick={handleCancelEdit}
-              size="sm"
-              variant="ghost"
-              className="text-red-400 hover:text-red-300 hover:cursor-pointer hover:bg-red-500/10"
-            >
-              <X className="h-4 w-4" />
-            </Button>
-          </div>
-        ) : (
-          <div className="flex items-center gap-2">
-            <h1 className="text-gray-100 font-semibold text-xl max-w-[300px] truncate">
-              {documenttitle}
-            </h1>
-            <Button
-              onClick={() => setIsEditing(true)}
-              size="sm"
-              variant="ghost"
-              className="text-gray-400 hover:text-gray-200 hover:bg-gray-700 hover:rounded hover:cursor-pointer"
-            >
-              <Edit3 />
-            </Button>
-          </div>
-        )}
-      </div>
+  
       <div className="flex h-fit items-center justify-end gap-x-9">
         <Button
           className="text-white 
@@ -105,10 +66,13 @@ export default function DocumentNavBarComponent({
           <Forward color="white" />
           Share
         </Button>
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" />
-          <AvatarFallback>PF</AvatarFallback>
-        </Avatar>
+        <Link href="/profile" className="hover:opacity-80 transition-opacity">
+          <Avatar className="cursor-pointer">
+            <div className="w-full h-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white text-sm font-medium">
+              JD
+            </div>
+          </Avatar>
+        </Link>
       </div>
     </div>
   );
